@@ -1,0 +1,36 @@
+PROJECT ANALYSIS & HIGH-LEVEL DESIGN (HLD)
+=========================================
+
+1. ARCHITECTURE OVERVIEW
+-----------------------
+The project is a full-stack MERN (MongoDB, Express, React, Node) application enhanced with an AI Processing Worker.
+
+* Frontend (React/Vite/MUI): Features a premium glassmorphic dashboard for managing invoices.
+* Backend (Node.js/Express): Orchestrates data between the database, file storage, and AI processing.
+* AI Worker (Python/FastAPI): Automates data extraction from documents using OCR (AWS Textract) and LLMs (OpenAI GPT-4).
+* Storage: Uses AWS S3 for secure document storage and MongoDB for metadata persistence.
+
+2. SYSTEM FLOW
+-------------
+1. UPLOAD: User uploads an invoice (PDF or Image).
+2. EXTRACTION: Backend sends the file to the AI Worker, which reads the text and extracts 30+ structured fields (GST, Vehicle No, Items, etc.).
+3. APPROVAL: User reviews and approves the extracted data on the dashboard.
+4. GENERATION: User generates a Lorry Hire Slip or Fuel Slip. The system creates a professional PDF and stores it in the 'Vault' (S3).
+5. MANAGEMENT: All documents can be searched, viewed, printed, or downloaded from the Document Hub.
+
+3. REAL-WORLD PROBLEMS SOLVED
+----------------------------
+* Manual Data Entry: Eliminates the need for transport operators to manually type invoice details.
+* Document Standardization: Automatically generates professional Lorry Hire Slips and Fuel Slips, ensuring consistent records.
+* Automated Validation: Uses AI to verify GST/PAN numbers and cross-check amounts, reducing human error.
+* Centralized Vault: Replaces paper folders with a secure, searchable digital repository for all logistics documents.
+
+4. WHAT HAS BEEN SOLVED RECENTLY
+-------------------------------
+* "Damaged File" Issue: Replaced broken download links with a secure backend proxy to ensure PDFs open correctly.
+* Dynamic File Extensions: Fixed a bug where images were forced into PDF formats. The system now correctly handles PNG, JPG, and PDF downloads.
+* UI Responsiveness: Overhauled the dashboard and review pages to work perfectly on mobile devices.
+* Component Stability: Fixed various code crashes in the Lorry Slip and Fuel Slip generation logic.
+
+Created by Antigravity AI
+Date: March 8, 2026
